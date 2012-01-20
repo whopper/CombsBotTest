@@ -1,0 +1,13 @@
+CombsBot - bot for #catacombs.
+Features:
+  o Will query wicker's database for the following requested info:
+    - IP to hostname / hostname to IP
+    - hostname / IP -> Purpose
+    - hostname / IP -> Hardware
+    - hostname / IP -> OS
+  o Commands
+    - CombsBot:
+        o host $hostname / $IP
+        o purpose $hostname / $IP
+        o hardware $hostname / $IP
+        o os $hostname / $IP
