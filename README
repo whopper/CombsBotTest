@@ -6,6 +6,9 @@ Features:
     - hostname / IP -> Hardware
     - hostname / IP -> OS
   o Commands
+    - !host $hostname/IP - gives info about a Combs box
+
+(Merging all commands into one)
     - CombsBot:
         o host $hostname / $IP
         o purpose $hostname / $IP
