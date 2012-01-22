@@ -24,7 +24,7 @@ def main():
 
   s.send("NICK %s\r\n" % NICK)
   s.send("USER %s %s bla :%s\r\n" % (IDENT, HOST, REALNAME))
-  s.send("JOIN %s :%s\r\n" % (CHAN, "#######"))
+  s.send("JOIN %s :%s\r\n" % (CHAN, "######"))
   # _________________________________________________________
 
 

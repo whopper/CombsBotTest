@@ -18,7 +18,15 @@ def main ():
     toquery.append(lines.rstrip('\r\n')) 
 
   cursor = db.cursor()
-  cursor.execute("SELECT * FROM box WHERE ip_address = '%s'" % toquery[0])
+
+  testint = str(toquery)
+  print testint[2]
+
+  if testint[2] == '1':
+    cursor.execute("SELECT * FROM box WHERE ip_address = '%s'" % toquery[0])
+  else:
+    cursor.execute("SELECT * FROM box WHERE boxname = '%s'" % toquery[0])
+
 
   data = cursor.fetchall() 
   strdata = str(data)
