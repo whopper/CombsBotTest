@@ -8,7 +8,7 @@ def main():
   NICK="CombsBot"
   IDENT="CombsBot"
   REALNAME="Whopper's Bot. Uses Wicker's CombsDB as backend"
-  CHAN="#catacombs"
+  CHAN="#whopper"
   readbuffer=""
 
  #Random Variables _________________________________________
@@ -24,7 +24,7 @@ def main():
 
   s.send("NICK %s\r\n" % NICK)
   s.send("USER %s %s bla :%s\r\n" % (IDENT, HOST, REALNAME))
-  s.send("JOIN %s :%s\r\n" % (CHAN, "######"))
+  s.send("JOIN %s :%s\r\n" % (CHAN, "#####"))
   # _________________________________________________________
 
 
@@ -43,14 +43,17 @@ def main():
       if lengthtemp >= 4: # only parse lines if there are at least 3 words
   # _______________________________OPTIONS ________________________________________
         if line[3] == ':&help':
-          s.send("PRIVMSG %s :%s\r\n" % (CHAN, "Options: !host $host/IP - gives info about a Combs box"))
+          s.send("PRIVMSG %s :%s\r\n" % (CHAN, "Options: &host <host/IP>, &owner <username> "))
 
-        if line[3] == ':&host' or '&host' in line:
+        if line[3] == ':&host' in line:
           subprocess.call(['echo %s > queryresult' % line[4]], shell=True)
-          subprocess.call(["/home/whopper/CombsBot/AskDB.py"], shell=True)
+          subprocess.call(["/home/whopper/CombsBot/AskDB.py host"], shell=True)
           FileWriter(s, CHAN)
 
-
+        if line[3] == ':&owner' in line:
+          subprocess.call(['echo %s > queryresult' % line[4]], shell=True)
+          subprocess.call(["/home/whopper/CombsBot/AskDB.py owner"], shell=True)
+          FileWriter(s, CHAN)
 
 
 
@@ -79,7 +82,7 @@ def FileWriter(s, CHAN):
   else:
     s.send("PRIVMSG %s :%s\r\n" % (CHAN, "%s" % tlist1[0]))
 
-#  subprocess.call(['rm /home/whopper/CombsBot/queryresult'], shell=True)
+  subprocess.call(['rm /home/whopper/CombsBot/queryresult'], shell=True)
 
 
 if __name__ == '__main__':
